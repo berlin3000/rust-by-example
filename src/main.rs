@@ -5,6 +5,23 @@ fn reverse_tuple(pair: (bool, i32)) -> (i32, bool) {
     (int_param, bool_param)
 }
 
+// tuple struct
+#[derive(Debug)]
+struct Point(f32, f32);
+
+#[derive(Debug)]
+struct Line{
+    start: Point,
+    end: Point
+}
+
+impl Line {
+    fn line_length(&self) -> f32 {
+        return ((self.start.1 - self.end.1).powf(2.0) + (self.start.0 - self.end.0).powf(2.0)).sqrt();
+    }
+}
+
+// Unit struct
 #[derive(Debug)]
 struct Rectangle {
     height: u32,
@@ -78,5 +95,13 @@ fn main() {
             None => println!("no value present")
         }
     }
+
+    // Implement Struct
+    let line: Line = Line {
+        start: Point(1.0, 1.0),
+        end: Point(2.0, 2.0)
+    };
+
+    println!("implemented struct line has length: {:?}", line.line_length())
 
 }
